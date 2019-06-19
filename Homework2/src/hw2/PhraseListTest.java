@@ -13,7 +13,7 @@ public class PhraseListTest {
 	{
 		PhraseList phrase = new PhraseList("D:\\ISU\\cs227\\Workspace\\Homework2\\phrases.txt");
 		System.out.println(phrase.getPhrase(1));
-		assertEquals("READ MY LIPS", "READ MY LIPS");
+		assertEquals(phrase.getPhrase(1), "READ MY LIPS");
 	}
 	
 	@Test

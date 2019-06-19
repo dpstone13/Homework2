@@ -30,4 +30,19 @@ public class HiddenTextTest {
 		System.out.println(phrase.getHiddenText());
 		//assertEquals("Hello", "Hello");
 	}
+	
+	@Test
+	public void testGetDisplayedText()
+	{
+		HiddenText phrase = new HiddenText("Hello world");
+		System.out.println(phrase.getDisplayedText());
+	}
+	
+	@Test
+	public void testLetterCount()
+	{
+		HiddenText phrase = new HiddenText("Hello world");
+		System.out.print("Expected 1 ");
+		System.out.println(phrase.letterCount('e'));
+	}
 }
