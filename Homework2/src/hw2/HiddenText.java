@@ -7,9 +7,10 @@ import java.util.Scanner;
 
 public class HiddenText {
 	private String hiddenText;
-	private char[] guessedChars;
+	//private char[] guessedChars;
 	private static final int ASCIIVALUE = 65;
 	private char[] displayedText;
+	private char[] hiddenTextArray;
 
 	// private String output;
 	public HiddenText(String phrase) {
@@ -20,15 +21,18 @@ public class HiddenText {
 		{
 			displayedText[i] = displayedText[i] == ' ' ? ' ' : asterisk;
 		}
-		guessedChars = new char[26];
+		hiddenTextArray = hiddenText.toCharArray();
 
 	}
 
 	public int countHiddenConsonants() {
 		int consonantCounter = 0;
-//"BCDFGHJKLMNPQRSTVWXYZ".indexOf(ch) >= 0
-		for (int i = 0; i < hiddenText.length(); i++) {
-			if (displayedText.equals('*') && hiddenText[i] ) {
+		for (int i = 0; i < displayedText.length; i++) {
+			if (displayedText[i] == '*' && hiddenTextArray[i] != 'A' && hiddenTextArray[i] != 'A'
+					&& hiddenTextArray[i] != 'E'
+					&& hiddenTextArray[i] != 'I'
+					&& hiddenTextArray[i] != 'O'
+					&& hiddenTextArray[i] != 'U') {
 				consonantCounter++;
 			}
 		}
@@ -38,9 +42,8 @@ public class HiddenText {
 	public int countHiddenLetters() {
 		int consonantCounter = 0;
 
-		for (int i = 0; i < hiddenText.length(); i++) {
-			char ch = displayedText.charAt(i);
-			if (ch.contains('*')) {
+		for (int i = 0; i < displayedText.length; i++) {
+			if (displayedText[i] == '*') {
 				consonantCounter++;
 			}
 		}
@@ -58,9 +61,9 @@ public class HiddenText {
 
 	public int letterCount(char ch) {
 		int charCounter = 0;
-		for (int i = 0; i < hiddenText.length(); i++) {
-			char ch1 = hiddenText.charAt(i);
-			if (ch1 == ch) {
+		char ch1 = Character.toUpperCase(ch);
+		for (int i = 0; i < displayedText.length; i++) {
+			if (hiddenTextArray[i] == ch1) {
 				charCounter++;
 			}
 		}
@@ -68,16 +71,27 @@ public class HiddenText {
 	}
 
 	public void update(char ch) {
-		String str = hiddenText;
-		char[] charArray = str.toCharArray();
-		char asterisk = '*';
-		for (int i = 0; i < charArray.length; i++) {
-			int ascii = (int) charArray[i] - ASCIIVALUE;
-			if (charArray[i] != ' ' && guessedChars[ascii] != charArray[i]) {
-				charArray[i] = asterisk;
+		char ch1 = Character.toUpperCase(ch);
+		for(int i = 0; i < displayedText.length; i++)
+		{
+			if(hiddenTextArray[i] == ch1)
+			{
+				displayedText[i] = ch1;
 			}
 		}
-		displayedText = charArray;
+		
+		
+		
+//		String str = hiddenText;
+//		char[] charArray = str.toCharArray();
+//		char asterisk = '*';
+//		for (int i = 0; i < charArray.length; i++) {
+//			int ascii = (int) charArray[i] - ASCIIVALUE;
+//			if (charArray[i] != ' ' && guessedChars[ascii] != charArray[i]) {
+//				charArray[i] = asterisk;
+//			}
+//		}
+//		displayedText = charArray;
 	}
 
 	public void updateAllRemaining() {
