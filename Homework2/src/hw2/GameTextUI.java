@@ -30,7 +30,7 @@ public class GameTextUI
    */
   public static void main(String[] args) throws FileNotFoundException
   {
-    new GameTextUI().go("phrases.txt");
+    new GameTextUI().go("D:\\ISU\\cs227\\Workspace\\Homework2\\phrases.txt");
   }
   
   /**

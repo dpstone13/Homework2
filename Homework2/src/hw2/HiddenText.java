@@ -1,5 +1,8 @@
 package hw2;
-
+/**
+ * Represents some hidden text for a letter-guessing game.
+ * @author Daniel Stone
+ */
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,11 +10,15 @@ import java.util.Scanner;
 
 public class HiddenText {
 	private String hiddenText;
-	//private char[] guessedChars;
-	private static final int ASCIIVALUE = 65;
 	private char[] displayedText;
 	private char[] hiddenTextArray;
 
+	/**
+	 * Constructs a GameText using the given string as the hidden text.
+	 * 
+	 * @param phrase
+	 * The phrase that will be used in the game.
+	 */
 	// private String output;
 	public HiddenText(String phrase) {
 		hiddenText = phrase.toUpperCase();
@@ -24,7 +31,9 @@ public class HiddenText {
 		hiddenTextArray = hiddenText.toCharArray();
 
 	}
-
+	/**
+	 * Constructs a GameText using the given string as the hidden text.
+	 */
 	public int countHiddenConsonants() {
 		int consonantCounter = 0;
 		for (int i = 0; i < displayedText.length; i++) {
@@ -38,7 +47,9 @@ public class HiddenText {
 		}
 		return consonantCounter;
 	}
-
+	/**
+	 * @return the number of alphabetic character positions that are currently not displayed (occupied by '*' characters).
+	 */
 	public int countHiddenLetters() {
 		int consonantCounter = 0;
 
@@ -49,16 +60,24 @@ public class HiddenText {
 		}
 		return consonantCounter;
 	}
-
+	/**
+	 * @return the displayed form of the hidden text, in which only the letters that have been identified by the update() methodare revealed.
+	 */
 	public char[] getDisplayedText() {
 
 		return displayedText;
 	}
-
+	/**
+	 * @return the actual hidden text stored in this object.
+	 */
 	public String getHiddenText() {
 		return hiddenText;
 	}
-
+	/**
+	 * @return the number of times the given character occurs in the hidden text.
+	 * @param ch
+	 * The character chosen.
+	 */
 	public int letterCount(char ch) {
 		int charCounter = 0;
 		char ch1 = Character.toUpperCase(ch);
@@ -69,7 +88,11 @@ public class HiddenText {
 		}
 		return charCounter;
 	}
-
+	/**
+	 * Updates the displayed text to reveal all occurrences ofthe given character in the hidden text, if any.
+	 * @param ch
+	 * Represents the letter chosen.
+	 */
 	public void update(char ch) {
 		char ch1 = Character.toUpperCase(ch);
 		for(int i = 0; i < displayedText.length; i++)
@@ -79,21 +102,10 @@ public class HiddenText {
 				displayedText[i] = ch1;
 			}
 		}
-		
-		
-		
-//		String str = hiddenText;
-//		char[] charArray = str.toCharArray();
-//		char asterisk = '*';
-//		for (int i = 0; i < charArray.length; i++) {
-//			int ascii = (int) charArray[i] - ASCIIVALUE;
-//			if (charArray[i] != ' ' && guessedChars[ascii] != charArray[i]) {
-//				charArray[i] = asterisk;
-//			}
-//		}
-//		displayedText = charArray;
 	}
-
+	/**
+	 * Updates the displayed text to reveal all hidden letters.
+	 */
 	public void updateAllRemaining() {
 		displayedText = hiddenText.toUpperCase().toCharArray();
 	}
