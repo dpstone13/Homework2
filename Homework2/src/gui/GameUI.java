@@ -42,7 +42,7 @@ public class GameUI extends JPanel
   {
     String name0 = "Fred";
     String name1 = "George";
-    String filename = "phrases.txt";
+    String filename = "D:\\ISU\\cs227\\Workspace\\Homework2\\phrases.txt";
     int seed = (int) System.currentTimeMillis();
     GameUI.start(name0, name1, filename, seed); 
   }

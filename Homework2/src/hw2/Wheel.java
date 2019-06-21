@@ -45,7 +45,6 @@ public class Wheel {
 	 */
 	public Wheel() {
 		rotation = 359;
-		value = 0;
 	}
 
 	/**

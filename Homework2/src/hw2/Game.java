@@ -1,4 +1,7 @@
 package hw2;
+
+import java.util.Random;
+
 /**
  * This class encapsulates all the logic for a multi-player game of"Wheel of Fortune".
  * @author Daniel Stone
@@ -36,6 +39,7 @@ public class Game {
 	 * Cost to buy a vowel.
 	 */
 	public static int VOWEL_COST = 250;
+	private String phrase;
 
 	/**
 	 * Constructs a new game instance.
@@ -44,6 +48,12 @@ public class Game {
 	 * An array of all the players' names.
 	 */
 	public Game(String[] playerNames) {
+		phraseList = new PhraseList("D:\\ISU\\cs227\\Workspace\\Homework2\\phrases.txt");
+		Random rand = new Random();
+		int phraseNumber = rand.nextInt(10);
+		phrase = phraseList.getPhrase(phraseNumber);
+		hiddenText = new HiddenText(phrase);
+		wheel = new Wheel();
 		needSpin = true;
 		roundOver = false;
 		playerArray = new Player[playerNames.length];
